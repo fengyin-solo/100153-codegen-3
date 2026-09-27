@@ -233,6 +233,18 @@ class SettlementEntry(BaseModel):
     field_6: str | None = None  # 付款日期
     field_7: str | None = None  # 结算状态
 
+class DutyEntry(BaseModel):
+    """值班交接明细结构。"""
+
+    field_0: str | None = None  # 班次
+    field_1: str | None = None  # 值班班组
+    field_2: str | None = None  # 交班人
+    field_3: str | None = None  # 接班人
+    field_4: str | None = None  # 交接进度
+    field_5: str | None = None  # 待办事项
+    field_6: str | None = None  # 回执批次
+    field_7: str | None = None  # 交接状态
+
 class TrainingEntry(BaseModel):
     """培训记录明细结构。"""
 

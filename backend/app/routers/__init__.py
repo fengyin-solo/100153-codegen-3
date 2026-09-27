@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 from app.routers import station as router_station
+from app.routers import duty as router_duty
 from app.routers import sensor as router_sensor
 from app.routers import observation as router_observation
 from app.routers import quality as router_quality
@@ -25,4 +26,4 @@ from app.routers import contract as router_contract
 from app.routers import settlement as router_settlement
 from app.routers import training as router_training
 
-ROUTERS = [router_station, router_sensor, router_observation, router_quality, router_calibration, router_transmission, router_power, router_layout, router_inspection, router_fault, router_sparepart, router_metainfo, router_alarm, router_comm, router_service, router_contract, router_settlement, router_training]
+ROUTERS = [router_station, router_duty, router_sensor, router_observation, router_quality, router_calibration, router_transmission, router_power, router_layout, router_inspection, router_fault, router_sparepart, router_metainfo, router_alarm, router_comm, router_service, router_contract, router_settlement, router_training]
