@@ -28,6 +28,32 @@ class EntryPayload(BaseModel):
     remark: str | None = None
 
 
+class HandoverCreatePayload(BaseModel):
+    """交班登记：按班次登记班组与交接双方，并把待办挂成交接事项。"""
+
+    shift: str = Field(default="", description="班次，如 白班 2026-09-27")
+    team: str = Field(default="", description="交班班组")
+    handover_person: str = Field(default="", description="交班人")
+    receiver_person: str = Field(default="", description="接班人")
+    receiver_team: str = Field(default="", description="接班班组，留空时与交班班组相同")
+    item_ids: list[int] = Field(default_factory=list, description="挂起的班组待办事项 id")
+    extra_items: list[str] = Field(default_factory=list, description="现场补充的交接事项内容")
+
+
+class HandoverDecision(BaseModel):
+    """接班人对单条交接事项给出的处理结果。"""
+
+    item_id: int
+    action: str = Field(description="confirm=确认接收，return=退回")
+    reason: str = Field(default="", description="逐条写清的确认说明或退回原因")
+
+
+class HandoverReviewPayload(BaseModel):
+    """一次提交多条交接事项的确认或退回结果。"""
+
+    decisions: list[HandoverDecision] = Field(default_factory=list)
+
+
 
 class StationEntry(BaseModel):
     """观测站点明细结构。"""
